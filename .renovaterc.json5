@@ -1,6 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
+  // MR の自動マージは行わない
+  "automerge": false,
+  "platformAutomerge": false,
+  "labels": ["dependencies"],
+  "assignees": [],
+  "reviewers": [],
+  // MR の作成上限をなくす
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  // majorの更新が入っていても同じMRにまとめる
+  "separateMajorMinor": false,
   "lockFileMaintenance": {
     "enabled": true,
   },
@@ -11,6 +22,14 @@
       "groupName": "RubyGems packages",
       "rangeStrategy": "update-lockfile",
       "automerge": false
+    },
+    {
+      // Ruby: アップデートに問題のあるgemをバージョン固定する
+      "matchDatasources": ["rubygems"],
+      "matchPackageNames": [
+        "puma" // テストのために固定する
+      ],
+      "enabled": false
     }
   ]
 }
