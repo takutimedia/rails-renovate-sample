@@ -30,6 +30,11 @@
         "puma" // テストのために固定する
       ],
       "enabled": false
+    },
+    {
+      // 各種設定ファイルに記載された Ruby のバージョンをまとめて更新する
+      "matchPackageNames": ["ruby"],
+      "groupName": "Ruby"
     }
   ]
 }
