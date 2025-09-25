@@ -15,6 +15,17 @@
   "lockFileMaintenance": {
     "enabled": true,
   },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["\\Dockerfile$"],
+      "matchStrings": [
+        "RUBY_VERSION:\\s*(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "depNameTemplate": "ruby",
+      "datasourceTemplate": "ruby-version"
+    }
+  ],
   "packageRules": [
     {
       // Ruby: Ruby on Rails のパッケージをまとめてアップデートする
