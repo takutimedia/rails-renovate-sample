@@ -18,14 +18,16 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["\\Dockerfile$"],
-      "matchStrings": [
-        "RUBY_VERSION:\\s*(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      "description": "Update _VERSION variables in Dockerfiles",
+      "managerFilePatterns": [
+        "/(^|/|\\.)Dockerfile$/",
+        "/(^|/)Dockerfile\\.[^/]*$/"
       ],
-      "depNameTemplate": "ruby",
-      "datasourceTemplate": "ruby-version"
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
+      ]
     }
-  ],
+  ]
   "packageRules": [
     {
       // Ruby: Ruby on Rails のパッケージをまとめてアップデートする
