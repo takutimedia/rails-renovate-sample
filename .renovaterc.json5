@@ -15,6 +15,11 @@
   "lockFileMaintenance": {
     "enabled": true,
   },
+  // .ruby-version の依存関係の自動更新
+  "managerFilePatterns": [
+    "/(^|/)\\.ruby-version$/"
+  ],
+  "versioning": "ruby",
   "packageRules": [
     {
       // Ruby: Ruby on Rails のパッケージをまとめてアップデートする
@@ -34,7 +39,9 @@
     {
       // 各種設定ファイルに記載された Ruby のバージョンをまとめて更新する
       "matchPackageNames": ["ruby"],
-      "groupName": "Ruby"
+      "groupName": "Ruby",
+
+
     }
   ]
 }
