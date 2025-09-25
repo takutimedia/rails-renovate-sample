@@ -39,9 +39,7 @@
     {
       // 各種設定ファイルに記載された Ruby のバージョンをまとめて更新する
       "matchPackageNames": ["ruby"],
-      "groupName": "Ruby",
-
-
+      "groupName": "Ruby"
     }
   ]
 }
