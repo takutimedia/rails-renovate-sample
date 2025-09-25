@@ -10,24 +10,9 @@
   // MR の作成上限をなくす
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  // majorの更新が入っていても同じMRにまとめる
-  "separateMajorMinor": false,
   "lockFileMaintenance": {
     "enabled": true,
   },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Update _VERSION variables in Dockerfiles",
-      "managerFilePatterns": [
-        "/(^|/|\\.)Dockerfile$/",
-        "/(^|/)Dockerfile\\.[^/]*$/"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
-      ]
-    }
-  ],
   "packageRules": [
     {
       // Ruby: Ruby on Rails のパッケージをまとめてアップデートする
@@ -45,9 +30,10 @@
       "enabled": false
     },
     {
-      // 各種設定ファイルに記載された Ruby のバージョンをまとめて更新する
+      // Ruby: Ruby自体のアップデートは行わない
       "matchPackageNames": ["ruby"],
-      "groupName": "Ruby"
+      "groupName": "Ruby",
+      "enabled": false
     }
   ]
 }
